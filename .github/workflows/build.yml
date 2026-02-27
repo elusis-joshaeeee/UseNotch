@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-mac:
     runs-on: macos-latest
@@ -22,19 +25,12 @@ jobs:
       run: npm ci
     
     - name: Build macOS app
-      run: npm run dist
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npm run build-mac
     
-    - name: Upload to Releases
-      uses: softprops/action-gh-release@v1
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
       with:
-        files: |
+        name: CreditNotch-macOS
+        path: |
           dist/*.dmg
           dist/*.zip
-        tag_name: v${{ github.run_number }}
-        name: "CreditNotch v${{ github.run_number }}"
-        draft: false
-        prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
