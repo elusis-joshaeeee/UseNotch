@@ -35,8 +35,7 @@
       "main.js",
       "index.html",
       "styles.css",
-      "renderer.js",
-      "icon.png"
+      "renderer.js"
     ]
   },
   "devDependencies": {
