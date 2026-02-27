@@ -29,8 +29,7 @@
           "target": "zip",
           "arch": ["x64", "arm64"]
         }
-      ],
-
+      ]
     },
     "files": [
       "main.js",
